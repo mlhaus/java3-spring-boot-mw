@@ -12,7 +12,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name="first_name", nullable = false, length = 50)
     private String firstName;
@@ -33,5 +33,6 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"), // Column in user_roles that references the 'users' table
             inverseJoinColumns = @JoinColumn(name = "role_id") // Column in user_roles that references the 'roles' table
     )
+    @EqualsAndHashCode.Exclude
     private Set<Role> roles;
 }

@@ -12,7 +12,7 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false, unique = true, length = 50)
     private String name; // e.g., "ADMIN", "STUDENT"
@@ -22,6 +22,7 @@ public class Role {
 
     // Mapped by the 'roles' field in the User entity.
     @ManyToMany(mappedBy = "roles")
+    @EqualsAndHashCode.Exclude
     private Set<User> users;
 
     // We will add the relationship to Permissions later.
